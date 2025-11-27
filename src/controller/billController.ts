@@ -82,6 +82,25 @@ export async function payBill(req: Request, res: Response) {
   }
 }
 
+export async function bankingQueryBill(req: Request, res: Response) {
+  try {
+    const { subscriberNo } = req.query;
+    if (!subscriberNo) {
+      return res.status(400).json({ message: "subscriberNo is required" });
+    }
+    const bills = await billService.getBillsBySubscriber(
+      subscriberNo as string
+    );
+    if (bills.length === 0) {
+      return res.status(200).json({ message: "No unpaid bills found" });
+    }
+    return res.status(200).json(bills);
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+}
+
 export async function createBill(req: Request, res: Response) {
   try {
     const billData = req.body;
@@ -97,6 +116,11 @@ export async function createBill(req: Request, res: Response) {
     }
 
     const newBill = await billService.createBill(billData);
+    if (!newBill) {
+      return res
+        .status(409)
+        .json({ message: "Bill for this subscriber and month already exists" });
+    }
 
     return res.status(201).json(newBill);
   } catch (err) {
