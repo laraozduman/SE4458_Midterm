@@ -5,31 +5,30 @@ let bills: Bill[] = []; // Geçici in-memory storage
 export async function getBill(
   subscriberNo: string,
   month: string
-): Promise<Bill[]> {
-  return bills.filter(
-    (b) => b.subscriberNo === subscriberNo && b.month === month
+): Promise<Bill | null> {
+  return (
+    bills.find((b) => b.subscriberNo === subscriberNo && b.month === month) ||
+    null
   );
+}
+
+export async function getBillsBySubscriber(
+  subscriberNo: string
+): Promise<Bill[]> {
+  return bills.filter((b) => b.subscriberNo === subscriberNo && !b.paidStatus);
 }
 
 export async function createBill(bill: Bill): Promise<Bill> {
+  if (
+    bills.find(
+      (b) => b.subscriberNo === bill.subscriberNo && b.month === bill.month
+    )
+  ) {
+    return null;
+  }
   bill.paidStatus = false;
   bills.push(bill);
   return bill;
-}
-
-export async function updateBill(
-  subscriberNo: string,
-  month: string,
-  paidAmount: number
-): Promise<Bill | null> {
-  const bill = bills.find(
-    (b) => b.subscriberNo === subscriberNo && b.month === month
-  );
-  if (bill) {
-    bill.paidAmount = paidAmount;
-    return bill;
-  }
-  return null;
 }
 
 export async function getBillDetailed(
@@ -50,7 +49,7 @@ export async function payBill(
   const bill = bills.find(
     (b) => b.subscriberNo === subscriberNo && b.month === month
   );
-  if (!bill) return null;
+  if (!bill) return { bill: null, error: "Bill not found" };
   const remainingAmount = bill.billTotal - bill.paidAmount;
   if (amount > remainingAmount) {
     console.error(
