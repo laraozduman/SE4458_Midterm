@@ -42,13 +42,32 @@ export async function queryBillDetailed(req: Request, res: Response) {
 
     if (!bill) return res.status(404).json({ message: "Bill not found" });
 
-    return res.status(200).json(bill);
+    const page = parseInt((req.query.page as string) || "1", 10);
+    const limit = parseInt((req.query.limit as string) || "10", 10);
+    const start = (page - 1) * limit;
+    const end = start + limit;
+
+    const totalItems = bill.details.length;
+    const paginatedDetails = bill.details.slice(start, end);
+
+    return res.status(200).json({
+      subscriberNo: bill.subscriberNo,
+      month: bill.month,
+      billTotal: bill.billTotal,
+      paidAmount: bill.paidAmount,
+      paidStatus: bill.paidStatus,
+      totalDetails: totalItems,
+      page,
+      limit,
+      details: paginatedDetails,
+    });
   } catch (err) {
     console.error(err);
-    return res.status(500).json({ message: "Internal server error" });
+    return res
+      .status(500)
+      .json({ message: "Internal server error", error: err });
   }
 }
-
 export async function payBill(req: Request, res: Response) {
   try {
     const { subscriberNo, month, amount } = req.body;
@@ -84,13 +103,22 @@ export async function payBill(req: Request, res: Response) {
 
 export async function bankingQueryBill(req: Request, res: Response) {
   try {
-    const { subscriberNo } = req.query;
+    const user = (req as any).user;
+
+    const subscriberNo = req.query.subscriberNo as string;
+
     if (!subscriberNo) {
       return res.status(400).json({ message: "subscriberNo is required" });
     }
-    const bills = await billService.getBillsBySubscriber(
-      subscriberNo as string
-    );
+
+    if (user.role !== "admin" && user.subscriberNo !== subscriberNo) {
+      return res.status(403).json({
+        message: "You are not allowed to view another subscriber's bills",
+      });
+    }
+
+    const bills = await billService.getBillsBySubscriber(subscriberNo);
+
     if (bills.length === 0) {
       return res.status(200).json({ message: "No unpaid bills found" });
     }

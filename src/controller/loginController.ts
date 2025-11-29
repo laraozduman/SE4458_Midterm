@@ -1,17 +1,25 @@
 import { Request, Response } from "express";
-import jwt from "jsonwebtoken";
+import { generateToken } from "../services/authService";
 
-const JWT_SECRET = process.env.JWT_SECRET || "default_secret";
-
-export async function login(req: Request, res: Response) {
-  const { username } = req.body;
-
-  if (!username) {
-    return res.status(400).json({ message: "username required" });
+export function adminLogin(req: Request, res: Response) {
+  const { username, password } = req.body;
+  console.log(username, password);
+  if ((username as string) === "admin" && (password as string) === "1234") {
+    const token = generateToken({ role: "admin", username });
+    return res.status(200).json({ token });
   }
 
-  // Gerçek user DB yok → direkt token veriyoruz
-  const token = jwt.sign({ username }, JWT_SECRET, { expiresIn: "1d" });
+  return res.status(401).json({ message: "Invalid admin credentials" });
+}
+
+export function userLogin(req: Request, res: Response) {
+  const { subscriberNo } = req.body;
+
+  if (!subscriberNo) {
+    return res.status(400).json({ message: "subscriberNo required" });
+  }
+
+  const token = generateToken({ role: "user", subscriberNo });
 
   return res.status(200).json({ token });
 }

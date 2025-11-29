@@ -1,6 +1,5 @@
 import { Bill } from "../model/billModel";
-
-let bills: Bill[] = []; // Geçici in-memory storage
+import { bills } from "../store/billStore";
 
 export async function getBill(
   subscriberNo: string,
@@ -27,6 +26,8 @@ export async function createBill(bill: Bill): Promise<Bill> {
     return null;
   }
   bill.paidStatus = false;
+  bill.details = Array.isArray(bill.details) ? bill.details : [];
+  bill.paidAmount = 0;
   bills.push(bill);
   return bill;
 }
@@ -35,6 +36,7 @@ export async function getBillDetailed(
   subscriberNo: string,
   month: string
 ): Promise<Bill | null> {
+  console.log("Fetching detailed bill for:", subscriberNo, month);
   return (
     bills.find((b) => b.subscriberNo === subscriberNo && b.month === month) ||
     null
