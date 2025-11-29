@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 
 const JWT_SECRET = process.env.JWT_SECRET || "default_secret";
 
-export async function authMiddleware(
+export function authMiddleware(
   req: Request,
   res: Response,
   next: NextFunction
@@ -11,10 +11,12 @@ export async function authMiddleware(
   try {
     const header = req.headers.authorization;
 
-    if (!header || !header.startsWith("Bearer ")) {
-      return res
-        .status(401)
-        .json({ message: "Unauthorized: No token provided" });
+    if (!header) {
+      return res.status(401).json({ message: "Authorization header missing" });
+    }
+
+    if (!header.startsWith("Bearer ")) {
+      return res.status(401).json({ message: "Invalid authorization format" });
     }
 
     const token = header.split(" ")[1];
@@ -23,7 +25,6 @@ export async function authMiddleware(
     (req as any).user = decoded;
     next();
   } catch (err) {
-    console.error("Auth error:", err);
-    return res.status(401).json({ message: "Unauthorized: Invalid token" });
+    return res.status(401).json({ message: "Invalid or expired token" });
   }
 }
