@@ -23,6 +23,14 @@ The system includes versioning, authentication, rate limiting, paging, logging, 
 - JSON Web Token (JWT) Authentication
 - Azure App Service Deployment
 
+## Github Repo
+
+[https://github.com/laraozduman/SE4458_Midterm](https://github.com/laraozduman/SE4458_Midterm)
+
+## Presentation Video
+
+https://drive.google.com/file/d/1KZ-ZMN1IFZrFmfFoLOeH_peLdP_fGsfg/view?usp=sharing
+
 ## Database Schema (Prisma)
 
 ```prisma
@@ -290,6 +298,11 @@ subscriberNo,month,billTotal
 
 - Removing the startup script and redeploying restored the log output.
 
-## Conclusion
+## Authour
 
-This backend fully satisfies all requirements defined in the SE4458 Midterm (Group 1) project guidelines.
+Lara Özudman
+
+- SE4458 - Software Construction
+- Yaşar University
+- Deployed on Azure
+- GitHub: https://github.com/laraozduman
