@@ -1,46 +1,37 @@
-import { Bill } from "../model/billModel";
-import { bills } from "../store/billStore";
+import { prisma } from "../lib/prisma";
+import { Bill } from "@prisma/client";
 
 export async function getBill(
   subscriberNo: string,
   month: string
 ): Promise<Bill | null> {
-  return (
-    bills.find((b) => b.subscriberNo === subscriberNo && b.month === month) ||
-    null
-  );
+  console.log("getBill called with:", subscriberNo, month);
+  const result = await prisma.bill.findFirst({
+    where: { subscriberNo, month },
+  });
+  return result;
 }
 
 export async function getBillsBySubscriber(
   subscriberNo: string
 ): Promise<Bill[]> {
-  return bills.filter((b) => b.subscriberNo === subscriberNo && !b.paidStatus);
-}
-
-export async function createBill(bill: Bill): Promise<Bill> {
-  if (
-    bills.find(
-      (b) => b.subscriberNo === bill.subscriberNo && b.month === bill.month
-    )
-  ) {
-    return null;
-  }
-  bill.paidStatus = false;
-  bill.details = Array.isArray(bill.details) ? bill.details : [];
-  bill.paidAmount = 0;
-  bills.push(bill);
-  return bill;
+  console.log("getBillsBySubscriber called with:", subscriberNo);
+  return prisma.bill.findMany({
+    where: {
+      subscriberNo,
+      paidStatus: false,
+    },
+  });
 }
 
 export async function getBillDetailed(
   subscriberNo: string,
   month: string
 ): Promise<Bill | null> {
-  console.log("Fetching detailed bill for:", subscriberNo, month);
-  return (
-    bills.find((b) => b.subscriberNo === subscriberNo && b.month === month) ||
-    null
-  );
+  console.log("getBillDetailed called with:", subscriberNo, month);
+  return prisma.bill.findFirst({
+    where: { subscriberNo, month },
+  });
 }
 
 export async function payBill(
@@ -48,25 +39,44 @@ export async function payBill(
   month: string,
   amount: number
 ): Promise<{ bill: Bill | null; error?: string }> {
-  const bill = bills.find(
-    (b) => b.subscriberNo === subscriberNo && b.month === month
-  );
-  if (!bill) return { bill: null, error: "Bill not found" };
-  const remainingAmount = bill.billTotal - bill.paidAmount;
-  if (amount > remainingAmount) {
-    console.error(
-      `Payment amount exceeds remaining bill amount. Remaining: ${remainingAmount}, Attempted payment: ${amount}`
-    );
+  console.log("payBill called with:", subscriberNo, month, amount);
+  const bill = await prisma.bill.findFirst({
+    where: { subscriberNo, month },
+  });
+
+  if (!bill) return { bill: null };
+
+  const remaining = bill.billTotal - bill.paidAmount;
+
+  if (amount > remaining) {
     return {
-      bill: bill,
-      error: `Amount exceeds remaining balance. Remaining: ${remainingAmount}`,
+      bill,
+      error: `Amount exceeds remaining balance. Remaining: ${remaining}`,
     };
   }
+  console.log("Updating bill with payment:", { subscriberNo, month, amount });
+  const updatedBill = await prisma.bill.update({
+    where: { id: bill.id },
+    data: {
+      paidAmount: bill.paidAmount + amount,
+      paidStatus: bill.paidAmount + amount === bill.billTotal,
+    },
+  });
 
-  bill.paidAmount += amount;
-  if (bill.paidAmount == bill.billTotal) {
-    bill.paidStatus = true;
-  }
+  return { bill: updatedBill };
+}
 
-  return { bill };
+export async function createBillBatch(bills: any[]) {
+  console.log("createBillBatch called with bills:", bills);
+  return prisma.bill.createMany({
+    data: bills.map((b) => ({
+      subscriberNo: b.subscriberNo,
+      month: b.month,
+      billTotal: Number(b.billTotal),
+      paidAmount: 0,
+      paidStatus: false,
+      details: b.details || [],
+    })),
+    skipDuplicates: true,
+  });
 }

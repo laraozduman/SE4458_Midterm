@@ -1,0 +1,254 @@
+openapi: 3.0.0
+info:
+  title: SE4458-midterm-lara
+  description: >-
+    ### Welcome to Postman! This is your first collection.
+
+
+    Collections are your starting point for building and testing APIs. You can
+    use this one to:
+
+
+    • Group related requests  
+
+    • Test your API in real-world scenarios  
+
+    • Document and share your requests
+
+
+    Update the name and overview whenever you’re ready to make it yours.
+
+
+    [Learn more about Postman
+    Collections.](https://learning.postman.com/docs/collections/collections-overview/)
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+paths:
+  /api/v1/admin/bill:
+    post:
+      tags:
+        - BillingAPI
+      summary: addBill
+      description: >-
+        This is a GET request and it is used to "get" data from an endpoint.
+        There is no request body for a GET request, but you can use query
+        parameters to help specify the resource you want data on (e.g., in this
+        request, we have `id=1`).
+
+
+        A successful GET response will have a `200 OK` status, and should
+        include some kind of response body - for example, HTML web content or
+        JSON data.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                subscriberNo: '111'
+                month: 2024-05
+                billTotal: 30
+                paidAmount: 0
+                details:
+                  - descriptcion: bill
+                    amount: 32
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/bill/batch:
+    post:
+      tags:
+        - BillingAPI
+      summary: addBillBatch
+      description: >-
+        This is a GET request and it is used to "get" data from an endpoint.
+        There is no request body for a GET request, but you can use query
+        parameters to help specify the resource you want data on (e.g., in this
+        request, we have `id=1`).
+
+
+        A successful GET response will have a `200 OK` status, and should
+        include some kind of response body - for example, HTML web content or
+        JSON data.
+      requestBody:
+        content: {}
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/bills/pay:
+    post:
+      tags:
+        - BillingAPI
+      summary: payBill
+      description: >-
+        This is a GET request and it is used to "get" data from an endpoint.
+        There is no request body for a GET request, but you can use query
+        parameters to help specify the resource you want data on (e.g., in this
+        request, we have `id=1`).
+
+
+        A successful GET response will have a `200 OK` status, and should
+        include some kind of response body - for example, HTML web content or
+        JSON data.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                subscriberNo: '111'
+                month: 2024-05
+                amount: 20
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/auth/user/login:
+    post:
+      tags:
+        - BillingAPI
+      summary: userLogin
+      description: >-
+        This is a POST request, submitting data to an API via the request body.
+        This request submits JSON data, and the data is reflected in the
+        response.
+
+
+        A successful POST request typically returns a `200 OK` or `201 Created`
+        response code.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                subscriberNo: '111'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/auth/admin/login:
+    post:
+      tags:
+        - BillingAPI
+      summary: adminLogin
+      description: >-
+        This is a POST request, submitting data to an API via the request body.
+        This request submits JSON data, and the data is reflected in the
+        response.
+
+
+        A successful POST request typically returns a `200 OK` or `201 Created`
+        response code.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                username: admin
+                password: '1234'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/bills/query:
+    get:
+      tags:
+        - BillingAPI
+      summary: getBill
+      description: >-
+        This is a POST request, submitting data to an API via the request body.
+        This request submits JSON data, and the data is reflected in the
+        response.
+
+
+        A successful POST request typically returns a `200 OK` or `201 Created`
+        response code.
+      parameters:
+        - name: subscriberNo
+          in: query
+          schema:
+            type: integer
+          example: '211'
+        - name: month
+          in: query
+          schema:
+            type: string
+          example: 2024-05
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/bills/detailed:
+    get:
+      tags:
+        - BillingAPI
+      summary: getBillDetailed
+      description: >-
+        This is a POST request, submitting data to an API via the request body.
+        This request submits JSON data, and the data is reflected in the
+        response.
+
+
+        A successful POST request typically returns a `200 OK` or `201 Created`
+        response code.
+      parameters:
+        - name: subscriberNo
+          in: query
+          schema:
+            type: integer
+          example: '111'
+        - name: month
+          in: query
+          schema:
+            type: string
+          example: 2024-06
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '2'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/bills/bankingQuery:
+    get:
+      tags:
+        - BillingAPI
+      summary: bankingQuery
+      description: >-
+        This is a POST request, submitting data to an API via the request body.
+        This request submits JSON data, and the data is reflected in the
+        response.
+
+
+        A successful POST request typically returns a `200 OK` or `201 Created`
+        response code.
+      parameters:
+        - name: subscriberNo
+          in: query
+          schema:
+            type: integer
+          example: '111'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}

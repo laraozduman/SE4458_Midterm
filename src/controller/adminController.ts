@@ -46,9 +46,7 @@ export async function addBillBatch(req: Request, res: Response) {
 
     fs.createReadStream(filePath)
       .pipe(parse({ columns: true, trim: true }))
-      .on("data", (row) => {
-        rows.push(row);
-      })
+      .on("data", (row) => rows.push(row))
       .on("end", async () => {
         fs.unlinkSync(filePath);
 
@@ -68,8 +66,6 @@ export async function addBillBatch(req: Request, res: Response) {
             subscriberNo,
             month,
             billTotal: Number(billTotal),
-            paidAmount: 0,
-            paidStatus: false,
             details: [],
           });
 

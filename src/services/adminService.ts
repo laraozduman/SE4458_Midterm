@@ -1,28 +1,40 @@
-import { Bill } from "../model/billModel";
-import { bills } from "../store/billStore";
+import { prisma } from "../lib/prisma";
 
-export function getBillsStore() {
-  return bills;
-}
+export async function addBill(data: {
+  subscriberNo: string;
+  month: string;
+  billTotal: number;
+  details?: any[];
+}): Promise<{ bill?: any; error?: string }> {
+  try {
+    console.log("addBill called with data:", data);
+    const exists = await prisma.bill.findFirst({
+      where: {
+        subscriberNo: data.subscriberNo,
+        month: data.month,
+      },
+    });
 
-export async function addBill(
-  bill: Bill
-): Promise<{ bill?: Bill; error?: string }> {
-  const exists = bills.find(
-    (b) => b.subscriberNo === bill.subscriberNo && b.month === bill.month
-  );
+    if (exists) {
+      return {
+        error: `A bill already exists for ${data.subscriberNo} in ${data.month}`,
+      };
+    }
+    console.log("Creating bill with data:", data);
+    const bill = await prisma.bill.create({
+      data: {
+        subscriberNo: data.subscriberNo,
+        month: data.month,
+        billTotal: data.billTotal,
+        paidAmount: 0,
+        paidStatus: false,
+        details: Array.isArray(data.details) ? data.details : [],
+      },
+    });
 
-  if (exists) {
-    return {
-      error: `A bill already exists for ${bill.subscriberNo} in ${bill.month}`,
-    };
+    return { bill };
+  } catch (error) {
+    console.error("addBill DB error:", error);
+    return { error: "Database error while adding bill" };
   }
-
-  bill.paidAmount = 0;
-  bill.paidStatus = false;
-  bill.details = Array.isArray(bill.details) ? bill.details : [];
-
-  bills.push(bill);
-
-  return { bill };
 }
