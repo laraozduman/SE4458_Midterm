@@ -1,0 +1,36 @@
+name: Deploy Backend to Azure
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - src/**
+      - prisma/**
+      - package.json
+      - tsconfig.json
+      - openapi.yaml
+      - generate-swagger.js
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build backend
+        run: npm run build
+
+      - name: Deploy backend
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: se4458-webapp
+          publish-profile: ${{ secrets.AZURE_BACKEND_PUBLISH_PROFILE }}
+          package: .

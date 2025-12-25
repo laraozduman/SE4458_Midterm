@@ -1,0 +1,28 @@
+name: Deploy Gateway to Azure
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - gateway/**
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install
+        working-directory: gateway
+        run: npm install
+
+      - name: Deploy
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: se4458-gateway-final
+          publish-profile: ${{ secrets.AZURE_GATEWAY_PUBLISH_PROFILE }}
+          package: gateway
