@@ -4,7 +4,7 @@ import axios from "axios";
 const router = Router();
 
 const BACKEND_URL =
-  "https://se4458-webapp-c9bhapdya4esc8hr.francecentral-01.azurewebsites.net/api/v1/bills";
+  "https://se4458-webapp-c9bhapdya4esc8hr.francecentral-01.azurewebsites.net";
 
 router.get("/query", async (req, res) => {
   const response = await axios.get(`${BACKEND_URL}/query`, {
