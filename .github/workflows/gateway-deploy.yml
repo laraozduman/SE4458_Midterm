@@ -24,9 +24,21 @@ jobs:
         working-directory: gateway
         run: npm run build
 
-      - name: Deploy
+      - name: Prepare deploy package
+        run: |
+          mkdir deploy
+          cp gateway/package.json deploy/
+          cp gateway/package-lock.json deploy/
+          cp -r gateway/dist deploy/dist
+
+      - name: Zip deploy package
+        run: |
+          cd deploy
+          zip -r gateway.zip .
+
+      - name: Deploy to Azure
         uses: azure/webapps-deploy@v3
         with:
           app-name: se4458-gateway-final
           publish-profile: ${{ secrets.AZURE_GATEWAY_PUBLISH_PROFILE }}
-          package: gateway
+          package: deploy/gateway.zip

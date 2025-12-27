@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { sign, verify } from "jsonwebtoken";
+import { verify } from "jsonwebtoken";
 
 const JWT_SECRET = process.env.JWT_SECRET || "default_secret";
 
