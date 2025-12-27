@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const billController_1 = require("../controller/billController");
+const authMiddleware_1 = require("../middleware/authMiddleware");
+const rateLimit_1 = require("../middleware/rateLimit");
+const router = (0, express_1.Router)();
+router.get("/query", authMiddleware_1.authMiddleware, rateLimit_1.rateLimit, billController_1.queryBill);
+router.get("/detailed", authMiddleware_1.authMiddleware, billController_1.queryBillDetailed);
+router.post("/pay", billController_1.payBill);
+router.post("/createBill", authMiddleware_1.authMiddleware, billController_1.createBill);
+router.get("/bankingQuery", authMiddleware_1.authMiddleware, billController_1.bankingQueryBill);
+exports.default = router;
