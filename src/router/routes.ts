@@ -11,6 +11,7 @@ import {
   payBill,
   bankingQueryBill,
 } from "../controller/billController";
+import { chat } from "../controller/chatController";
 import { rateLimit } from "../middleware/rateLimit";
 
 const upload = multer({ dest: "uploads/" });
@@ -30,4 +31,6 @@ router.get("/bills/query", authMiddleware, rateLimit, queryBill);
 router.get("/bills/detailed", authMiddleware, queryBillDetailed);
 router.post("/bills/pay", payBill);
 router.get("/bills/bankingQuery", authMiddleware, bankingQueryBill);
+
+router.post("/chat", authMiddleware, chat);
 export default router;
