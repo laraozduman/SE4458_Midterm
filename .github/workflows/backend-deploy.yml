@@ -31,22 +31,9 @@ jobs:
       - name: Build backend
         run: npm run build
 
-      - name: Prepare deploy package
-        run: |
-          mkdir deploy
-          cp package.json deploy/
-          cp package-lock.json deploy/
-          cp -r dist deploy/dist
-          cp -r node_modules deploy/node_modules
-
-      - name: Zip deploy package
-        run: |
-          cd deploy
-          zip -r backend.zip .
-
-      - name: Deploy to Azure
+      - name: Deploy to Azure (source)
         uses: azure/webapps-deploy@v3
         with:
           app-name: se4458-webapp
           publish-profile: ${{ secrets.AZURE_BACKEND_PUBLISH_PROFILE }}
-          package: deploy/backend.zip        
+          package: .       
