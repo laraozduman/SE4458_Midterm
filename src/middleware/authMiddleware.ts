@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
-import { verify } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 
-const JWT_SECRET = process.env.JWT_SECRET || "default_secret";
+const JWT_SECRET = process.env.JWT_SECRET || "supersecret";
 
 export function authMiddleware(
   req: Request,
@@ -20,7 +20,7 @@ export function authMiddleware(
     }
 
     const token = header.split(" ")[1];
-    const decoded = verify(token, JWT_SECRET);
+    const decoded = jwt.verify(token, JWT_SECRET);
 
     (req as any).user = decoded;
     next();
