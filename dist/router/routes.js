@@ -1,0 +1,26 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const multer_1 = __importDefault(require("multer"));
+const adminController_1 = require("../controller/adminController");
+const adminController_2 = require("../controller/adminController");
+const authMiddleware_1 = require("../middleware/authMiddleware");
+const roleMiddleware_1 = require("../middleware/roleMiddleware");
+const loginController_1 = require("../controller/loginController");
+const billController_1 = require("../controller/billController");
+const rateLimit_1 = require("../middleware/rateLimit");
+const upload = (0, multer_1.default)({ dest: "uploads/" });
+const router = (0, express_1.Router)();
+router.post("/admin/bill", authMiddleware_1.authMiddleware, roleMiddleware_1.requireAdmin, adminController_1.addBill);
+router.post("/admin/bill/batch", authMiddleware_1.authMiddleware, roleMiddleware_1.requireAdmin, upload.single("file"), adminController_2.addBillBatch);
+router.post("/auth/admin/login", loginController_1.adminLogin);
+router.post("/auth/user/login", loginController_1.userLogin);
+router.get("/bills/query", authMiddleware_1.authMiddleware, rateLimit_1.rateLimit, billController_1.queryBill);
+router.get("/bills/detailed", authMiddleware_1.authMiddleware, billController_1.queryBillDetailed);
+router.post("/bills/pay", billController_1.payBill);
+router.post("/bills/createBill", authMiddleware_1.authMiddleware, billController_1.createBill);
+router.get("/bills/bankingQuery", authMiddleware_1.authMiddleware, billController_1.bankingQueryBill);
+exports.default = router;
