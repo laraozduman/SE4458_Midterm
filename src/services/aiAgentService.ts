@@ -169,6 +169,6 @@ function mapChatError(err: any) {
     error: err,
     errorMessage: err.message,
     errorStatus: err.status,
-    message: "Beklenmeyen bir hata oluştu. Lütfen daha sonra tekrar deneyin.",
+    message: "An unexpected error occurred. Please try again later.",
   };
 }
