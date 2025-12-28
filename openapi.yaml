@@ -23,7 +23,7 @@ info:
     Collections.](https://learning.postman.com/docs/collections/collections-overview/)
   version: 1.0.0
 servers:
-  - url: http://localhost:3000
+  - url: https://se4458-webapp-c9bhapdya4esc8hr.francecentral-01.azurewebsites.net
 paths:
   /api/v1/admin/bill:
     post:
@@ -46,13 +46,16 @@ paths:
             schema:
               type: object
               example:
-                subscriberNo: '111'
-                month: 2024-05
-                billTotal: 30
+                subscriberNo: '127'
+                month: 2024-02
+                billTotal: 90
                 paidAmount: 0
                 details:
                   - descriptcion: bill
                     amount: 32
+                  - descriptcion: internet
+                    amount: 5
+                    unit: gb
       responses:
         '200':
           description: Successful response
@@ -101,9 +104,9 @@ paths:
             schema:
               type: object
               example:
-                subscriberNo: '111'
-                month: 2024-05
-                amount: 20
+                subscriberNo: '666'
+                month: 2024-12
+                amount: 80
       responses:
         '200':
           description: Successful response
@@ -128,7 +131,7 @@ paths:
             schema:
               type: object
               example:
-                subscriberNo: '111'
+                subscriberNo: '127'
       responses:
         '200':
           description: Successful response
@@ -178,12 +181,12 @@ paths:
           in: query
           schema:
             type: integer
-          example: '211'
+          example: '333'
         - name: month
           in: query
           schema:
             type: string
-          example: 2024-05
+          example: 2024-12
       responses:
         '200':
           description: Successful response
@@ -208,21 +211,21 @@ paths:
           schema:
             type: integer
           example: '111'
-        - name: month
-          in: query
-          schema:
-            type: string
-          example: 2024-06
         - name: limit
           in: query
           schema:
             type: integer
-          example: '2'
+          example: '1'
         - name: page
           in: query
           schema:
             type: integer
           example: '2'
+        - name: month
+          in: query
+          schema:
+            type: string
+          example: 2024-01
       responses:
         '200':
           description: Successful response
@@ -246,7 +249,30 @@ paths:
           in: query
           schema:
             type: integer
-          example: '111'
+          example: '333'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/chat:
+    post:
+      tags:
+        - BillingAPI
+      summary: agentAI
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                message: my bills
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
       responses:
         '200':
           description: Successful response
