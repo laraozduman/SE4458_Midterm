@@ -19,9 +19,9 @@ export function rateLimit(req: Request, res: Response, next: NextFunction) {
     requestCounts[key] += 1;
   }
 
-  if (requestCounts[key] > 3) {
+  if (requestCounts[key] > 6) {
     return res.status(429).json({
-      message: "Daily limit exceeded (3 requests per day)",
+      message: "Daily limit exceeded (6 requests per day)",
     });
   }
 
