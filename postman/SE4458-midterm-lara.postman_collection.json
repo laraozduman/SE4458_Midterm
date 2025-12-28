@@ -1,469 +1,1906 @@
 {
-	"info": {
-		"_postman_id": "2e4f0547-ee77-450c-b231-5441119f2a16",
-		"name": "SE4458-midterm-lara",
-		"description": "### Welcome to Postman! This is your first collection.\n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests  \n• Test your API in real-world scenarios  \n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "50326639",
-		"_collection_link": "https://ozdumanlara-4282103.postman.co/workspace/f078ead9-bf6f-4175-8c35-6de5fe0a507c/collection/50326639-2e4f0547-ee77-450c-b231-5441119f2a16?action=share&source=collection_link&creator=50326639"
-	},
-	"item": [
-		{
-			"name": "addBill",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							""
-						],
-						"type": "text/javascript",
-						"packages": {},
-						"requests": {}
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNzY0NDI5Njg0LCJleHAiOjE3NjQ0NzI4ODR9.zBhKfusPQD2dEIC1O74_e_yjnHFoZ43VwKMJhOOkIMI",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"subscriberNo\": \"111\",\r\n    \"month\": \"2024-05\",\r\n    \"billTotal\": 30,\r\n    \"paidAmount\": 0,\r\n    \"details\": [\r\n        {\r\n            \"descriptcion\": \"bill\",\r\n            \"amount\": 32\r\n        }\r\n    ]\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:3000/api/v1/admin/bill",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"v1",
-						"admin",
-						"bill"
-					]
-				},
-				"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
-			},
-			"response": []
-		},
-		{
-			"name": "addBillBatch",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							""
-						],
-						"type": "text/javascript",
-						"packages": {},
-						"requests": {}
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidXNlciIsInN1YnNjcmliZXJObyI6IjExMSIsImlhdCI6MTc2NDM3NTAyMSwiZXhwIjoxNzY0NDE4MjIxfQ.T5OaLxPKy6gWXVpQDn_G4UjTNTPk0PAe2O7baRenkCg",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "file",
-							"type": "file",
-							"src": "postman-cloud:///1f0ccac3-d681-4d40-ad50-344cb24b6ada"
-						}
-					]
-				},
-				"url": {
-					"raw": "http://localhost:3000/api/v1/admin/bill/batch",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"v1",
-						"admin",
-						"bill",
-						"batch"
-					]
-				},
-				"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
-			},
-			"response": []
-		},
-		{
-			"name": "payBill",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							""
-						],
-						"type": "text/javascript",
-						"packages": {},
-						"requests": {}
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImVjZW0iLCJpYXQiOjE3NjQyODM0ODcsImV4cCI6MTc2NDM2OTg4N30.7auuCL-Som5CYj0EEupYHVHZigwemReJRafbSjRTr2s",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"subscriberNo\": \"111\",\r\n  \"month\": \"2024-05\",\r\n  \"amount\": 20\r\n}\r\n",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:3000/api/v1/bills/pay",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"v1",
-						"bills",
-						"pay"
-					]
-				},
-				"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
-			},
-			"response": []
-		},
-		{
-			"name": "userLogin",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Successful POST request\", function () {",
-							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
-							"});",
-							""
-						],
-						"type": "text/javascript",
-						"packages": {},
-						"requests": {}
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"subscriberNo\": \"111\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:3000/api/v1/auth/user/login",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"v1",
-						"auth",
-						"user",
-						"login"
-					]
-				},
-				"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
-			},
-			"response": []
-		},
-		{
-			"name": "adminLogin",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Successful POST request\", function () {",
-							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
-							"});",
-							""
-						],
-						"type": "text/javascript",
-						"packages": {},
-						"requests": {}
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"username\": \"admin\",\n    \"password\": \"1234\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:3000/api/v1/auth/admin/login",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"v1",
-						"auth",
-						"admin",
-						"login"
-					]
-				},
-				"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
-			},
-			"response": []
-		},
-		{
-			"name": "getBill",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Successful POST request\", function () {",
-							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
-							"});",
-							""
-						],
-						"type": "text/javascript",
-						"packages": {},
-						"requests": {}
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidXNlciIsInN1YnNjcmliZXJObyI6IjExMSIsImlhdCI6MTc2NDQzMDU5OCwiZXhwIjoxNzY0NDczNzk4fQ.UAIAuu4mpf2DJmz9Gn5rJgq6yPrSuDCMVrLoZaJ2oXc",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3000/api/v1/bills/query?subscriberNo=211&month=2024-05",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"v1",
-						"bills",
-						"query"
-					],
-					"query": [
-						{
-							"key": "subscriberNo",
-							"value": "211"
-						},
-						{
-							"key": "month",
-							"value": "2024-05"
-						}
-					]
-				},
-				"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
-			},
-			"response": []
-		},
-		{
-			"name": "getBillDetailed",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Successful POST request\", function () {",
-							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
-							"});",
-							""
-						],
-						"type": "text/javascript",
-						"packages": {},
-						"requests": {}
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImVjZW0iLCJpYXQiOjE3NjQzNjQ5NTUsImV4cCI6MTc2NDQ1MTM1NX0.3uK43eJ0wFFxmAG8btlc7DlqAaQildBKuUuAOfgSRLs",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3000/api/v1/bills/detailed?subscriberNo=111&month=2024-06",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"v1",
-						"bills",
-						"detailed"
-					],
-					"query": [
-						{
-							"key": "subscriberNo",
-							"value": "111"
-						},
-						{
-							"key": "month",
-							"value": "2024-06"
-						},
-						{
-							"key": "limit",
-							"value": "2",
-							"disabled": true
-						},
-						{
-							"key": "page",
-							"value": "2",
-							"disabled": true
-						}
-					]
-				},
-				"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
-			},
-			"response": []
-		},
-		{
-			"name": "bankingQuery",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Successful POST request\", function () {",
-							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
-							"});",
-							""
-						],
-						"type": "text/javascript",
-						"packages": {},
-						"requests": {}
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidXNlciIsInN1YnNjcmliZXJObyI6IjExMSIsImlhdCI6MTc2NDQyOTcwNywiZXhwIjoxNzY0NDcyOTA3fQ.UYk7exm5Eb9u53IR1p5F4r85Ext0qXXh9607bwmTNHI",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:3000/api/v1/bills/bankingQuery?subscriberNo=111",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"v1",
-						"bills",
-						"bankingQuery"
-					],
-					"query": [
-						{
-							"key": "subscriberNo",
-							"value": "111"
-						}
-					]
-				},
-				"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
-			},
-			"response": []
-		}
-	]
+  "info": {
+    "_postman_id": "2e4f0547-ee77-450c-b231-5441119f2a16",
+    "name": "SE4458-midterm-lara",
+    "description": "### Welcome to Postman! This is your first collection.\n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests  \n• Test your API in real-world scenarios  \n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "50326639",
+    "_collection_link": "https://ozdumanlara-4282103.postman.co/workspace/forget-me-not's-Workspace~f078ead9-bf6f-4175-8c35-6de5fe0a507c/collection/50326639-2e4f0547-ee77-450c-b231-5441119f2a16?action=share&source=collection_link&creator=50326639"
+  },
+  "item": [
+    {
+      "name": "addBill",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [""],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNzY2ODYyODExLCJleHAiOjE3NjY5MDYwMTF9.qrFNXxDPhMb-PNXtDQ0gTy1hNBnUTypJb1v8dsrhiO8",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"subscriberNo\": \"127\",\r\n    \"month\": \"2024-02\",\r\n    \"billTotal\": 90,\r\n    \"paidAmount\": 0,\r\n    \"details\": [\r\n        {\r\n            \"descriptcion\": \"bill\",\r\n            \"amount\": 32\r\n        },\r\n        {\r\n            \"descriptcion\": \"internet\",\r\n            \"amount\": 5,\r\n            \"unit\": \"gb\"\r\n        }\r\n    ]\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://se4458-webapp-c9bhapdya4esc8hr.francecentral-01.azurewebsites.net/api/v1/admin/bill",
+          "protocol": "https",
+          "host": [
+            "se4458-webapp-c9bhapdya4esc8hr",
+            "francecentral-01",
+            "azurewebsites",
+            "net"
+          ],
+          "path": ["api", "v1", "admin", "bill"]
+        },
+        "description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+      },
+      "response": [
+        {
+          "name": "201",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"subscriberNo\": \"111\",\r\n    \"month\": \"2024-01\",\r\n    \"billTotal\": 30,\r\n    \"paidAmount\": 0,\r\n    \"details\": [\r\n        {\r\n            \"descriptcion\": \"bill\",\r\n            \"amount\": 32\r\n        },\r\n        {\r\n            \"descriptcion\": \"internet\",\r\n            \"amount\": 5,\r\n            \"unit\": \"gb\"\r\n        }\r\n    ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://se4458-webapp-c9bhapdya4esc8hr.francecentral-01.azurewebsites.net/api/v1/admin/bill",
+              "protocol": "https",
+              "host": [
+                "se4458-webapp-c9bhapdya4esc8hr",
+                "francecentral-01",
+                "azurewebsites",
+                "net"
+              ],
+              "path": ["api", "v1", "admin", "bill"]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Length",
+              "value": "229"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 30 Nov 2025 12:43:48 GMT"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"e5-/Cn5FX2Xz3vEYTFVMgEKWNNRZpY\""
+            },
+            {
+              "key": "request-context",
+              "value": "appId=cid-v1:"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"Bill created\",\n    \"bill\": {\n        \"id\": 6,\n        \"subscriberNo\": \"111\",\n        \"month\": \"2024-01\",\n        \"billTotal\": 30,\n        \"paidAmount\": 0,\n        \"paidStatus\": false,\n        \"details\": [\n            {\n                \"amount\": 32,\n                \"descriptcion\": \"bill\"\n            },\n            {\n                \"unit\": \"gb\",\n                \"amount\": 5,\n                \"descriptcion\": \"internet\"\n            }\n        ]\n    }\n}"
+        },
+        {
+          "name": "400(Bill already exists)",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"subscriberNo\": \"111\",\r\n    \"month\": \"2024-07\",\r\n    \"billTotal\": 30,\r\n    \"paidAmount\": 0,\r\n    \"details\": [\r\n        {\r\n            \"descriptcion\": \"bill\",\r\n            \"amount\": 32\r\n        },\r\n        {\r\n            \"descriptcion\": \"internet\",\r\n            \"amount\": 5,\r\n            \"unit\": \"gb\"\r\n        }\r\n    ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://se4458-webapp-c9bhapdya4esc8hr.francecentral-01.azurewebsites.net/api/v1/admin/bill",
+              "protocol": "https",
+              "host": [
+                "se4458-webapp-c9bhapdya4esc8hr",
+                "francecentral-01",
+                "azurewebsites",
+                "net"
+              ],
+              "path": ["api", "v1", "admin", "bill"]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Length",
+              "value": "54"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 30 Nov 2025 12:43:18 GMT"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"36-liv1ldEfv/oIc4OnoPpUthKkN2U\""
+            },
+            {
+              "key": "request-context",
+              "value": "appId=cid-v1:"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"A bill already exists for 111 in 2024-07\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "addBillBatch",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [""],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNzY2ODY0Njc2LCJleHAiOjE3NjY5MDc4NzZ9.k5gnss1SoA1PWmUnd3vrT-lOjG4NQw5irowm5tOKlqY",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "src": "postman-cloud:///1f0ce01d-3cc3-44f0-bbb0-3fb04019e585"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://se4458-webapp-c9bhapdya4esc8hr.francecentral-01.azurewebsites.net/api/v1/admin/bill/batch",
+          "protocol": "https",
+          "host": [
+            "se4458-webapp-c9bhapdya4esc8hr",
+            "francecentral-01",
+            "azurewebsites",
+            "net"
+          ],
+          "path": ["api", "v1", "admin", "bill", "batch"]
+        },
+        "description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+      },
+      "response": [
+        {
+          "name": "200",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": "postman-cloud:///1f0ce01d-3cc3-44f0-bbb0-3fb04019e585"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://se4458-webapp-c9bhapdya4esc8hr.francecentral-01.azurewebsites.net/api/v1/admin/bill/batch",
+              "protocol": "https",
+              "host": [
+                "se4458-webapp-c9bhapdya4esc8hr",
+                "francecentral-01",
+                "azurewebsites",
+                "net"
+              ],
+              "path": ["api", "v1", "admin", "bill", "batch"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Length",
+              "value": "338"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Date",
+              "value": "Sat, 27 Dec 2025 19:44:53 GMT"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"152-0zoKv4ZOm5NkkqrXIGYbxLLQ6ZI\""
+            },
+            {
+              "key": "request-context",
+              "value": "appId=cid-v1:"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"created\": 0,\n    \"rows\": [\n        {\n            \"subscriberNo\": \"111\",\n            \"month\": \"2024-02\",\n            \"billTotal\": \"120\"\n        },\n        {\n            \"subscriberNo\": \"222\",\n            \"month\": \"2024-10\",\n            \"billTotal\": \"150\"\n        },\n        {\n            \"subscriberNo\": \"333\",\n            \"month\": \"2024-07\",\n            \"billTotal\": \"90\"\n        }\n    ],\n    \"errors\": [\n        \"A bill already exists for 111 in 2024-02\",\n        \"A bill already exists for 222 in 2024-10\",\n        \"A bill already exists for 333 in 2024-07\"\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "payBill",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [""],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNzY2ODY0Njc2LCJleHAiOjE3NjY5MDc4NzZ9.k5gnss1SoA1PWmUnd3vrT-lOjG4NQw5irowm5tOKlqY",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"subscriberNo\": \"666\",\r\n  \"month\": \"2024-12\",\r\n  \"amount\": 80\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://se4458-webapp-c9bhapdya4esc8hr.francecentral-01.azurewebsites.net/api/v1/bills/pay",
+          "protocol": "https",
+          "host": [
+            "se4458-webapp-c9bhapdya4esc8hr",
+            "francecentral-01",
+            "azurewebsites",
+            "net"
+          ],
+          "path": ["api", "v1", "bills", "pay"]
+        },
+        "description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+      },
+      "response": [
+        {
+          "name": "400",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"subscriberNo\": \"666\",\r\n  \"month\": \"2024-11\",\r\n  \"amount\": 10\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://se4458-webapp-c9bhapdya4esc8hr.francecentral-01.azurewebsites.net/api/v1/bills/pay",
+              "protocol": "https",
+              "host": [
+                "se4458-webapp-c9bhapdya4esc8hr",
+                "francecentral-01",
+                "azurewebsites",
+                "net"
+              ],
+              "path": ["api", "v1", "bills", "pay"]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Length",
+              "value": "60"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Date",
+              "value": "Sat, 27 Dec 2025 19:45:44 GMT"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"3c-3h9kF2IF5wcONggjowKmK8kaLCA\""
+            },
+            {
+              "key": "request-context",
+              "value": "appId=cid-v1:"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"Amount exceeds remaining balance. Remaining: 0\"\n}"
+        },
+        {
+          "name": "200",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"subscriberNo\": \"666\",\r\n  \"month\": \"2024-12\",\r\n  \"amount\": 10\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://se4458-webapp-c9bhapdya4esc8hr.francecentral-01.azurewebsites.net/api/v1/bills/pay",
+              "protocol": "https",
+              "host": [
+                "se4458-webapp-c9bhapdya4esc8hr",
+                "francecentral-01",
+                "azurewebsites",
+                "net"
+              ],
+              "path": ["api", "v1", "bills", "pay"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Length",
+              "value": "236"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Date",
+              "value": "Sat, 27 Dec 2025 19:46:20 GMT"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"ec-XscnxRg7cRYfvLV4KCt2oM3lSmw\""
+            },
+            {
+              "key": "request-context",
+              "value": "appId=cid-v1:"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"Payment processed\",\n    \"bill\": {\n        \"id\": 14,\n        \"subscriberNo\": \"666\",\n        \"month\": \"2024-12\",\n        \"billTotal\": 90,\n        \"paidAmount\": 10,\n        \"paidStatus\": false,\n        \"details\": [\n            {\n                \"amount\": 32,\n                \"descriptcion\": \"bill\"\n            },\n            {\n                \"unit\": \"gb\",\n                \"amount\": 5,\n                \"descriptcion\": \"internet\"\n            }\n        ]\n    }\n}"
+        },
+        {
+          "name": "200",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"subscriberNo\": \"666\",\r\n  \"month\": \"2024-12\",\r\n  \"amount\": 80\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://se4458-webapp-c9bhapdya4esc8hr.francecentral-01.azurewebsites.net/api/v1/bills/pay",
+              "protocol": "https",
+              "host": [
+                "se4458-webapp-c9bhapdya4esc8hr",
+                "francecentral-01",
+                "azurewebsites",
+                "net"
+              ],
+              "path": ["api", "v1", "bills", "pay"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Length",
+              "value": "235"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Date",
+              "value": "Sat, 27 Dec 2025 19:46:42 GMT"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"eb-qjTXTiJ+9jr65xkaAUQU3K3N/3s\""
+            },
+            {
+              "key": "request-context",
+              "value": "appId=cid-v1:"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"Payment processed\",\n    \"bill\": {\n        \"id\": 14,\n        \"subscriberNo\": \"666\",\n        \"month\": \"2024-12\",\n        \"billTotal\": 90,\n        \"paidAmount\": 90,\n        \"paidStatus\": true,\n        \"details\": [\n            {\n                \"amount\": 32,\n                \"descriptcion\": \"bill\"\n            },\n            {\n                \"unit\": \"gb\",\n                \"amount\": 5,\n                \"descriptcion\": \"internet\"\n            }\n        ]\n    }\n}"
+        }
+      ]
+    },
+    {
+      "name": "userLogin",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Successful POST request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"subscriberNo\": \"127\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://se4458-webapp-c9bhapdya4esc8hr.francecentral-01.azurewebsites.net/api/v1/auth/user/login",
+          "protocol": "https",
+          "host": [
+            "se4458-webapp-c9bhapdya4esc8hr",
+            "francecentral-01",
+            "azurewebsites",
+            "net"
+          ],
+          "path": ["api", "v1", "auth", "user", "login"]
+        },
+        "description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+      },
+      "response": [
+        {
+          "name": "200",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"subscriberNo\": \"111\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://se4458-webapp-c9bhapdya4esc8hr.francecentral-01.azurewebsites.net/api/v1/auth/user/login",
+              "protocol": "https",
+              "host": [
+                "se4458-webapp-c9bhapdya4esc8hr",
+                "francecentral-01",
+                "azurewebsites",
+                "net"
+              ],
+              "path": ["api", "v1", "auth", "user", "login"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Length",
+              "value": "187"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 30 Nov 2025 12:37:03 GMT"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"bb-59ewOYkpZA7hgZo1ePTKqkTKwd4\""
+            },
+            {
+              "key": "request-context",
+              "value": "appId=cid-v1:"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidXNlciIsInN1YnNjcmliZXJObyI6IjExMSIsImlhdCI6MTc2NDUwNjIyMywiZXhwIjoxNzY0NTQ5NDIzfQ.yZ5_GtnfQp8XYw6Wke48j46g8qqlsKQy0MOiSv5ckQ8\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "adminLogin",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Successful POST request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"username\": \"admin\",\n    \"password\": \"1234\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://se4458-webapp-c9bhapdya4esc8hr.francecentral-01.azurewebsites.net/api/v1/auth/admin/login",
+          "protocol": "https",
+          "host": [
+            "se4458-webapp-c9bhapdya4esc8hr",
+            "francecentral-01",
+            "azurewebsites",
+            "net"
+          ],
+          "path": ["api", "v1", "auth", "admin", "login"]
+        },
+        "description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+      },
+      "response": [
+        {
+          "name": "200",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"username\": \"admin\",\n    \"password\": \"1234\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://se4458-webapp-c9bhapdya4esc8hr.francecentral-01.azurewebsites.net/api/v1/auth/admin/login",
+              "protocol": "https",
+              "host": [
+                "se4458-webapp-c9bhapdya4esc8hr",
+                "francecentral-01",
+                "azurewebsites",
+                "net"
+              ],
+              "path": ["api", "v1", "auth", "admin", "login"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Length",
+              "value": "185"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 30 Nov 2025 12:34:52 GMT"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"b9-PRs4IEDrh2XOxH9N3QSMVPJ2wJY\""
+            },
+            {
+              "key": "request-context",
+              "value": "appId=cid-v1:"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNzY0NTA2MDkyLCJleHAiOjE3NjQ1NDkyOTJ9.5o-KafvQsbrayheNMSaiCLvNG3wdsxIOLlf1cmVYMGc\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "getBill",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Successful POST request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidXNlciIsInN1YnNjcmliZXJObyI6IjMzMyIsImlhdCI6MTc2Njg2MTg3NCwiZXhwIjoxNzY2OTA1MDc0fQ.cBNFA7Dsju1-VIRCtQy7hx5s4S_my5sUW9SOlPK8Nfg",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://se4458-webapp-c9bhapdya4esc8hr.francecentral-01.azurewebsites.net/api/v1/bills/query?subscriberNo=333&month=2024-12",
+          "protocol": "https",
+          "host": [
+            "se4458-webapp-c9bhapdya4esc8hr",
+            "francecentral-01",
+            "azurewebsites",
+            "net"
+          ],
+          "path": ["api", "v1", "bills", "query"],
+          "query": [
+            {
+              "key": "subscriberNo",
+              "value": "333"
+            },
+            {
+              "key": "month",
+              "value": "2024-12"
+            }
+          ]
+        },
+        "description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+      },
+      "response": [
+        {
+          "name": "200",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://se4458-webapp-c9bhapdya4esc8hr.francecentral-01.azurewebsites.net/api/v1/bills/query?subscriberNo=111&month=2024-05",
+              "protocol": "https",
+              "host": [
+                "se4458-webapp-c9bhapdya4esc8hr",
+                "francecentral-01",
+                "azurewebsites",
+                "net"
+              ],
+              "path": ["api", "v1", "bills", "query"],
+              "query": [
+                {
+                  "key": "subscriberNo",
+                  "value": "111"
+                },
+                {
+                  "key": "month",
+                  "value": "2024-05"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Length",
+              "value": "96"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 30 Nov 2025 12:36:32 GMT"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"60-so9NdYQXg+zIcqIm98o01bGYP8k\""
+            },
+            {
+              "key": "request-context",
+              "value": "appId=cid-v1:"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": 1,\n    \"subscriberNo\": \"111\",\n    \"month\": \"2024-05\",\n    \"billTotal\": 30,\n    \"paidAmount\": 0,\n    \"paidStatus\": false\n}"
+        },
+        {
+          "name": "401",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://se4458-webapp-c9bhapdya4esc8hr.francecentral-01.azurewebsites.net/api/v1/bills/query?subscriberNo=111&month=2024-05",
+              "protocol": "https",
+              "host": [
+                "se4458-webapp-c9bhapdya4esc8hr",
+                "francecentral-01",
+                "azurewebsites",
+                "net"
+              ],
+              "path": ["api", "v1", "bills", "query"],
+              "query": [
+                {
+                  "key": "subscriberNo",
+                  "value": "111"
+                },
+                {
+                  "key": "month",
+                  "value": "2024-05"
+                }
+              ]
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Length",
+              "value": "38"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 30 Nov 2025 12:36:03 GMT"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"26-Xgv+GaqVb5MdihttTXhzczcstUY\""
+            },
+            {
+              "key": "request-context",
+              "value": "appId=cid-v1:"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"Invalid or expired token\"\n}"
+        },
+        {
+          "name": "403",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://se4458-webapp-c9bhapdya4esc8hr.francecentral-01.azurewebsites.net/api/v1/bills/query?subscriberNo=112&month=2024-05",
+              "protocol": "https",
+              "host": [
+                "se4458-webapp-c9bhapdya4esc8hr",
+                "francecentral-01",
+                "azurewebsites",
+                "net"
+              ],
+              "path": ["api", "v1", "bills", "query"],
+              "query": [
+                {
+                  "key": "subscriberNo",
+                  "value": "112"
+                },
+                {
+                  "key": "month",
+                  "value": "2024-05"
+                }
+              ]
+            }
+          },
+          "status": "Forbidden",
+          "code": 403,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Length",
+              "value": "68"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 30 Nov 2025 12:37:35 GMT"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"44-2siLb5CJj4DNKeGTlcZdJNTsDyw\""
+            },
+            {
+              "key": "request-context",
+              "value": "appId=cid-v1:"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"You are not allowed to view another subscriber's bills\"\n}"
+        },
+        {
+          "name": "429",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://se4458-webapp-c9bhapdya4esc8hr.francecentral-01.azurewebsites.net/api/v1/bills/query?subscriberNo=111&month=2024-05",
+              "protocol": "https",
+              "host": [
+                "se4458-webapp-c9bhapdya4esc8hr",
+                "francecentral-01",
+                "azurewebsites",
+                "net"
+              ],
+              "path": ["api", "v1", "bills", "query"],
+              "query": [
+                {
+                  "key": "subscriberNo",
+                  "value": "111"
+                },
+                {
+                  "key": "month",
+                  "value": "2024-05"
+                }
+              ]
+            }
+          },
+          "status": "Too Many Requests",
+          "code": 429,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Length",
+              "value": "55"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 30 Nov 2025 12:52:02 GMT"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"37-QomdpNLTbspe8fP+4oXMl8ODNXY\""
+            },
+            {
+              "key": "request-context",
+              "value": "appId=cid-v1:"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"Daily limit exceeded (3 requests per day)\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "getBillDetailed",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Successful POST request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNzY2ODU1MTI3LCJleHAiOjE3NjY4OTgzMjd9.Ors-zJvrXIaEkpLKRYPnSHXLYjD5Vb_PsyaHHB1Luxg",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://se4458-webapp-c9bhapdya4esc8hr.francecentral-01.azurewebsites.net/api/v1/bills/detailed?subscriberNo=111&limit=1&page=2&month=2024-01",
+          "protocol": "https",
+          "host": [
+            "se4458-webapp-c9bhapdya4esc8hr",
+            "francecentral-01",
+            "azurewebsites",
+            "net"
+          ],
+          "path": ["api", "v1", "bills", "detailed"],
+          "query": [
+            {
+              "key": "subscriberNo",
+              "value": "111"
+            },
+            {
+              "key": "limit",
+              "value": "1"
+            },
+            {
+              "key": "page",
+              "value": "2"
+            },
+            {
+              "key": "month",
+              "value": "2024-01"
+            }
+          ]
+        },
+        "description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+      },
+      "response": [
+        {
+          "name": "200",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://se4458-webapp-c9bhapdya4esc8hr.francecentral-01.azurewebsites.net/api/v1/bills/detailed?subscriberNo=111&month=2024-05",
+              "protocol": "https",
+              "host": [
+                "se4458-webapp-c9bhapdya4esc8hr",
+                "francecentral-01",
+                "azurewebsites",
+                "net"
+              ],
+              "path": ["api", "v1", "bills", "detailed"],
+              "query": [
+                {
+                  "key": "subscriberNo",
+                  "value": "111"
+                },
+                {
+                  "key": "limit",
+                  "value": "2",
+                  "disabled": true
+                },
+                {
+                  "key": "page",
+                  "value": "2",
+                  "disabled": true
+                },
+                {
+                  "key": "month",
+                  "value": "2024-05"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Length",
+              "value": "174"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 30 Nov 2025 12:40:32 GMT"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"ae-YkJyQEQelDQVsoLKff+eFTnKJd0\""
+            },
+            {
+              "key": "request-context",
+              "value": "appId=cid-v1:"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"subscriberNo\": \"111\",\n    \"month\": \"2024-05\",\n    \"billTotal\": 30,\n    \"paidAmount\": 0,\n    \"paidStatus\": false,\n    \"totalDetails\": 1,\n    \"page\": 1,\n    \"limit\": 10,\n    \"details\": [\n        {\n            \"amount\": 32,\n            \"descriptcion\": \"bill\"\n        }\n    ]\n}"
+        },
+        {
+          "name": "403",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://se4458-webapp-c9bhapdya4esc8hr.francecentral-01.azurewebsites.net/api/v1/bills/detailed?subscriberNo=112&month=2024-05",
+              "protocol": "https",
+              "host": [
+                "se4458-webapp-c9bhapdya4esc8hr",
+                "francecentral-01",
+                "azurewebsites",
+                "net"
+              ],
+              "path": ["api", "v1", "bills", "detailed"],
+              "query": [
+                {
+                  "key": "subscriberNo",
+                  "value": "112"
+                },
+                {
+                  "key": "limit",
+                  "value": "2",
+                  "disabled": true
+                },
+                {
+                  "key": "page",
+                  "value": "2",
+                  "disabled": true
+                },
+                {
+                  "key": "month",
+                  "value": "2024-05"
+                }
+              ]
+            }
+          },
+          "status": "Forbidden",
+          "code": 403,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Length",
+              "value": "68"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 30 Nov 2025 12:40:52 GMT"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"44-2siLb5CJj4DNKeGTlcZdJNTsDyw\""
+            },
+            {
+              "key": "request-context",
+              "value": "appId=cid-v1:"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"You are not allowed to view another subscriber's bills\"\n}"
+        },
+        {
+          "name": "401",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://se4458-webapp-c9bhapdya4esc8hr.francecentral-01.azurewebsites.net/api/v1/bills/detailed?subscriberNo=111&month=2024-05",
+              "protocol": "https",
+              "host": [
+                "se4458-webapp-c9bhapdya4esc8hr",
+                "francecentral-01",
+                "azurewebsites",
+                "net"
+              ],
+              "path": ["api", "v1", "bills", "detailed"],
+              "query": [
+                {
+                  "key": "subscriberNo",
+                  "value": "111"
+                },
+                {
+                  "key": "limit",
+                  "value": "2",
+                  "disabled": true
+                },
+                {
+                  "key": "page",
+                  "value": "2",
+                  "disabled": true
+                },
+                {
+                  "key": "month",
+                  "value": "2024-05"
+                }
+              ]
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Length",
+              "value": "38"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 30 Nov 2025 12:41:20 GMT"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"26-Xgv+GaqVb5MdihttTXhzczcstUY\""
+            },
+            {
+              "key": "request-context",
+              "value": "appId=cid-v1:"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"Invalid or expired token\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "bankingQuery",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Successful POST request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidXNlciIsInN1YnNjcmliZXJObyI6IjMzMyIsImlhdCI6MTc2Njg2MTg3NCwiZXhwIjoxNzY2OTA1MDc0fQ.cBNFA7Dsju1-VIRCtQy7hx5s4S_my5sUW9SOlPK8Nfg",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://se4458-webapp-c9bhapdya4esc8hr.francecentral-01.azurewebsites.net/api/v1/bills/bankingQuery?subscriberNo=333",
+          "protocol": "https",
+          "host": [
+            "se4458-webapp-c9bhapdya4esc8hr",
+            "francecentral-01",
+            "azurewebsites",
+            "net"
+          ],
+          "path": ["api", "v1", "bills", "bankingQuery"],
+          "query": [
+            {
+              "key": "subscriberNo",
+              "value": "333"
+            }
+          ]
+        },
+        "description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+      },
+      "response": [
+        {
+          "name": "200",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://se4458-webapp-c9bhapdya4esc8hr.francecentral-01.azurewebsites.net/api/v1/bills/bankingQuery?subscriberNo=111",
+              "protocol": "https",
+              "host": [
+                "se4458-webapp-c9bhapdya4esc8hr",
+                "francecentral-01",
+                "azurewebsites",
+                "net"
+              ],
+              "path": ["api", "v1", "bills", "bankingQuery"],
+              "query": [
+                {
+                  "key": "subscriberNo",
+                  "value": "111"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Length",
+              "value": "598"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 30 Nov 2025 12:47:18 GMT"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"256-SHuPk8NL/s0zBTQPC9DuxSF3pWE\""
+            },
+            {
+              "key": "request-context",
+              "value": "appId=cid-v1:"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"id\": 1,\n        \"subscriberNo\": \"111\",\n        \"month\": \"2024-05\",\n        \"billTotal\": 30,\n        \"paidAmount\": 0,\n        \"paidStatus\": false,\n        \"details\": [\n            {\n                \"amount\": 32,\n                \"descriptcion\": \"bill\"\n            }\n        ]\n    },\n    {\n        \"id\": 2,\n        \"subscriberNo\": \"111\",\n        \"month\": \"2024-07\",\n        \"billTotal\": 30,\n        \"paidAmount\": 0,\n        \"paidStatus\": false,\n        \"details\": [\n            {\n                \"amount\": 32,\n                \"descriptcion\": \"bill\"\n            }\n        ]\n    },\n    {\n        \"id\": 3,\n        \"subscriberNo\": \"111\",\n        \"month\": \"2024-10\",\n        \"billTotal\": 120,\n        \"paidAmount\": 0,\n        \"paidStatus\": false,\n        \"details\": []\n    },\n    {\n        \"id\": 6,\n        \"subscriberNo\": \"111\",\n        \"month\": \"2024-01\",\n        \"billTotal\": 30,\n        \"paidAmount\": 0,\n        \"paidStatus\": false,\n        \"details\": [\n            {\n                \"amount\": 32,\n                \"descriptcion\": \"bill\"\n            },\n            {\n                \"unit\": \"gb\",\n                \"amount\": 5,\n                \"descriptcion\": \"internet\"\n            }\n        ]\n    }\n]"
+        },
+        {
+          "name": "401",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://se4458-webapp-c9bhapdya4esc8hr.francecentral-01.azurewebsites.net/api/v1/bills/bankingQuery?subscriberNo=111",
+              "protocol": "https",
+              "host": [
+                "se4458-webapp-c9bhapdya4esc8hr",
+                "francecentral-01",
+                "azurewebsites",
+                "net"
+              ],
+              "path": ["api", "v1", "bills", "bankingQuery"],
+              "query": [
+                {
+                  "key": "subscriberNo",
+                  "value": "111"
+                }
+              ]
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Length",
+              "value": "42"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 30 Nov 2025 12:47:52 GMT"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"2a-THa6NYaM54AQ8Jf8J4R1Ya1wKYY\""
+            },
+            {
+              "key": "request-context",
+              "value": "appId=cid-v1:"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"Authorization header missing\"\n}"
+        },
+        {
+          "name": "403",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://se4458-webapp-c9bhapdya4esc8hr.francecentral-01.azurewebsites.net/api/v1/bills/bankingQuery?subscriberNo=112",
+              "protocol": "https",
+              "host": [
+                "se4458-webapp-c9bhapdya4esc8hr",
+                "francecentral-01",
+                "azurewebsites",
+                "net"
+              ],
+              "path": ["api", "v1", "bills", "bankingQuery"],
+              "query": [
+                {
+                  "key": "subscriberNo",
+                  "value": "112"
+                }
+              ]
+            }
+          },
+          "status": "Forbidden",
+          "code": 403,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Length",
+              "value": "68"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 30 Nov 2025 12:48:29 GMT"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"44-2siLb5CJj4DNKeGTlcZdJNTsDyw\""
+            },
+            {
+              "key": "request-context",
+              "value": "appId=cid-v1:"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"You are not allowed to view another subscriber's bills\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "agentAI",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidXNlciIsInN1YnNjcmliZXJObyI6Ijg4OCIsImlhdCI6MTc2Njg3NDgxOCwiZXhwIjoxNzY2OTE4MDE4fQ.N8Zcn0BDnnYDdl9M12UyXsWLz5Hw_zeP80OnF2z_VNg",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"message\": \"my bills\"\r\n}"
+        },
+        "url": {
+          "raw": "https://se4458-webapp-c9bhapdya4esc8hr.francecentral-01.azurewebsites.net/api/v1/chat",
+          "protocol": "https",
+          "host": [
+            "se4458-webapp-c9bhapdya4esc8hr",
+            "francecentral-01",
+            "azurewebsites",
+            "net"
+          ],
+          "path": ["api", "v1", "chat"]
+        }
+      },
+      "response": [
+        {
+          "name": "200 Pay bill",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"message\": \"pay 15 for my february 2024 bill\"\r\n}"
+            },
+            "url": {
+              "raw": "https://se4458-webapp-c9bhapdya4esc8hr.francecentral-01.azurewebsites.net/api/v1/chat",
+              "protocol": "https",
+              "host": [
+                "se4458-webapp-c9bhapdya4esc8hr",
+                "francecentral-01",
+                "azurewebsites",
+                "net"
+              ],
+              "path": ["api", "v1", "chat"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Length",
+              "value": "329"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Date",
+              "value": "Sat, 27 Dec 2025 22:00:42 GMT"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"149-YYXQbz7kJoNN+LLq2TPwnWtjD04\""
+            },
+            {
+              "key": "request-context",
+              "value": "appId=cid-v1:"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": true,\n    \"data\": {\n        \"type\": \"success\",\n        \"message\": \"Payment completed successfully.\",\n        \"data\": {\n            \"message\": \"Payment processed\",\n            \"bill\": {\n                \"id\": 16,\n                \"subscriberNo\": \"777\",\n                \"month\": \"2024-02\",\n                \"billTotal\": 90,\n                \"paidAmount\": 90,\n                \"paidStatus\": true,\n                \"details\": [\n                    {\n                        \"amount\": 32,\n                        \"descriptcion\": \"bill\"\n                    },\n                    {\n                        \"unit\": \"gb\",\n                        \"amount\": 5,\n                        \"descriptcion\": \"internet\"\n                    }\n                ]\n            }\n        }\n    }\n}"
+        },
+        {
+          "name": "200 Get Bill",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"message\": \"My bill for february\"\r\n}"
+            },
+            "url": {
+              "raw": "https://se4458-webapp-c9bhapdya4esc8hr.francecentral-01.azurewebsites.net/api/v1/chat",
+              "protocol": "https",
+              "host": [
+                "se4458-webapp-c9bhapdya4esc8hr",
+                "francecentral-01",
+                "azurewebsites",
+                "net"
+              ],
+              "path": ["api", "v1", "chat"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Length",
+              "value": "208"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Date",
+              "value": "Sat, 27 Dec 2025 22:01:40 GMT"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"d0-Wjmwp/jb/uUmgzWF1uNaQzPGOJQ\""
+            },
+            {
+              "key": "request-context",
+              "value": "appId=cid-v1:"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": true,\n    \"data\": {\n        \"type\": \"success\",\n        \"message\": \"your bill for 2024-02 is successfully retrieved.\",\n        \"data\": {\n            \"id\": 16,\n            \"subscriberNo\": \"777\",\n            \"month\": \"2024-02\",\n            \"billTotal\": 90,\n            \"paidAmount\": 90,\n            \"paidStatus\": true\n        }\n    }\n}"
+        },
+        {
+          "name": "200 Get Bills detailed",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"message\": \"My bills details for february\"\r\n}"
+            },
+            "url": {
+              "raw": "https://se4458-webapp-c9bhapdya4esc8hr.francecentral-01.azurewebsites.net/api/v1/chat",
+              "protocol": "https",
+              "host": [
+                "se4458-webapp-c9bhapdya4esc8hr",
+                "francecentral-01",
+                "azurewebsites",
+                "net"
+              ],
+              "path": ["api", "v1", "chat"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Length",
+              "value": "249"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Date",
+              "value": "Sat, 27 Dec 2025 22:02:17 GMT"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"f9-SkqMRobtfs3bjTbal2pamXcn5EM\""
+            },
+            {
+              "key": "request-context",
+              "value": "appId=cid-v1:"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": true,\n    \"data\": {\n        \"subscriberNo\": \"777\",\n        \"month\": \"2024-02\",\n        \"billTotal\": 90,\n        \"paidAmount\": 90,\n        \"paidStatus\": true,\n        \"totalDetails\": 2,\n        \"page\": 1,\n        \"limit\": 10,\n        \"details\": [\n            {\n                \"amount\": 32,\n                \"descriptcion\": \"bill\"\n            },\n            {\n                \"unit\": \"gb\",\n                \"amount\": 5,\n                \"descriptcion\": \"internet\"\n            }\n        ]\n    }\n}"
+        },
+        {
+          "name": "200 Banking Query",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"message\": \"my bills\"\r\n}"
+            },
+            "url": {
+              "raw": "https://se4458-webapp-c9bhapdya4esc8hr.francecentral-01.azurewebsites.net/api/v1/chat",
+              "protocol": "https",
+              "host": [
+                "se4458-webapp-c9bhapdya4esc8hr",
+                "francecentral-01",
+                "azurewebsites",
+                "net"
+              ],
+              "path": ["api", "v1", "chat"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Length",
+              "value": "222"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Date",
+              "value": "Sat, 27 Dec 2025 23:50:29 GMT"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"de-9uE52f6U5LCSTPT+3UNjMBJP8mw\""
+            },
+            {
+              "key": "request-context",
+              "value": "appId=cid-v1:"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": 17,\n            \"subscriberNo\": \"888\",\n            \"month\": \"2024-02\",\n            \"billTotal\": 90,\n            \"paidAmount\": 0,\n            \"paidStatus\": false,\n            \"details\": [\n                {\n                    \"amount\": 32,\n                    \"descriptcion\": \"bill\"\n                },\n                {\n                    \"unit\": \"gb\",\n                    \"amount\": 5,\n                    \"descriptcion\": \"internet\"\n                }\n            ]\n        }\n    ]\n}"
+        }
+      ]
+    }
+  ]
 }
