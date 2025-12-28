@@ -22,6 +22,14 @@ info:
     [Learn more about Postman
     Collections.](https://learning.postman.com/docs/collections/collections-overview/)
   version: 1.0.0
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+security:
+  - BearerAuth: []
 servers:
   - url: https://se4458-webapp-c9bhapdya4esc8hr.francecentral-01.azurewebsites.net
 paths:
@@ -125,6 +133,7 @@ paths:
 
         A successful POST request typically returns a `200 OK` or `201 Created`
         response code.
+      security: []     
       requestBody:
         content:
           application/json:
@@ -150,6 +159,7 @@ paths:
 
         A successful POST request typically returns a `200 OK` or `201 Created`
         response code.
+      security: []     
       requestBody:
         content:
           application/json:
