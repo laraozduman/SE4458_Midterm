@@ -1,7 +1,6 @@
 import axios from "axios";
 import { parseIntent } from "./openAiService";
 import { AIIntent } from "../model/aiIntentModel";
-import { error } from "console";
 
 const GATEWAY_BASE_URL =
   process.env.GATEWAY_BASE_URL ||
@@ -75,7 +74,7 @@ export async function handleChatMessage(
         console.log("Bill to pay:", bill);
         console.log("Initial amount to pay:", amountToPay);
         console.log("Pay type:", intent.payType);
-        if (amountToPay !== undefined && amountToPay !== 0) {
+        if (amountToPay == undefined || amountToPay == 0) {
           amountToPay = bill.billTotal - bill.paidAmount;
         }
 
